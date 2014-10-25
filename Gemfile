@@ -9,6 +9,7 @@ gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '2.1.3'
 gem 'bcrypt', '3.1.7'
 
+gem 'pg'
 gem 'haml-rails'
 gem 'figaro', '0.7.0'     # env variables
 
@@ -16,10 +17,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# development gems
-group :development, :test do
-  gem 'sqlite3', '1.3.9'    # dev & test database
-end
 
 # Paging
 gem 'kaminari', '0.16.1'
