@@ -9,6 +9,8 @@ gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '2.1.3'
 gem 'bcrypt', '3.1.7'
 
+gem 'haml-rails'
+
 group :doc do
   gem 'sdoc', require: false
 end
