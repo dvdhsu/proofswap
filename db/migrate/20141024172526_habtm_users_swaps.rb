@@ -4,5 +4,7 @@ class HabtmUsersSwaps < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :swap
     end
+
+    add_index :swaps_users, [:swap_id, :user_id]
   end
 end
