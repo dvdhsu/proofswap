@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141025092444) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "essays", force: true do |t|
     t.string   "link"
     t.integer  "swap_id"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 20141025092444) do
     t.datetime "updated_at"
   end
 
-  add_index "essays", ["swap_id"], name: "index_essays_on_swap_id"
-  add_index "essays", ["user_id"], name: "index_essays_on_user_id"
+  add_index "essays", ["swap_id"], name: "index_essays_on_swap_id", using: :btree
+  add_index "essays", ["user_id"], name: "index_essays_on_user_id", using: :btree
 
   create_table "swaps", force: true do |t|
     t.datetime "expires"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141025092444) do
     t.integer "swap_id"
   end
 
-  add_index "swaps_users", ["swap_id", "user_id"], name: "index_swaps_users_on_swap_id_and_user_id"
+  add_index "swaps_users", ["swap_id", "user_id"], name: "index_swaps_users_on_swap_id_and_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 20141025092444) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
