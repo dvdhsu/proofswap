@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024172526) do
+ActiveRecord::Schema.define(version: 20141025092444) do
+
+  create_table "essays", force: true do |t|
+    t.string   "link"
+    t.integer  "swap_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "essays", ["swap_id"], name: "index_essays_on_swap_id"
+  add_index "essays", ["user_id"], name: "index_essays_on_user_id"
 
   create_table "swaps", force: true do |t|
     t.datetime "expires"
@@ -23,6 +35,8 @@ ActiveRecord::Schema.define(version: 20141024172526) do
     t.integer "user_id"
     t.integer "swap_id"
   end
+
+  add_index "swaps_users", ["swap_id", "user_id"], name: "index_swaps_users_on_swap_id_and_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
