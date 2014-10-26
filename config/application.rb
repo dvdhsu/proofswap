@@ -22,9 +22,5 @@ module Proofswap
     
     # Test framework
     config.generators.test_framework false
-
-    # Filepicker
-    config.filepicker_rails.api_key = ENV["FILEPICKER_KEY"]
-    
   end
 end
