@@ -12,6 +12,7 @@ gem 'bcrypt', '3.1.7'
 gem 'pg'
 gem 'haml-rails'
 gem 'figaro', '0.7.0'     # env variables
+gem 'filepicker-rails'
 
 group :doc do
   gem 'sdoc', require: false
