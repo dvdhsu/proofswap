@@ -1,6 +1,6 @@
-class CreateEssays < ActiveRecord::Migration
+class CreatePapers < ActiveRecord::Migration
   def change
-    create_table :essays do |t|
+    create_table :papers do |t|
       t.string :filepicker_url
       t.references :swap, index: true
       t.references :user, index: true

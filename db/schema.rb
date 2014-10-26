@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141025092444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "essays", force: true do |t|
+  create_table "papers", force: true do |t|
     t.string   "filepicker_url"
     t.integer  "swap_id"
     t.integer  "user_id"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20141025092444) do
     t.datetime "updated_at"
   end
 
-  add_index "essays", ["swap_id"], name: "index_essays_on_swap_id", using: :btree
-  add_index "essays", ["user_id"], name: "index_essays_on_user_id", using: :btree
+  add_index "papers", ["swap_id"], name: "index_papers_on_swap_id", using: :btree
+  add_index "papers", ["user_id"], name: "index_papers_on_user_id", using: :btree
 
   create_table "swaps", force: true do |t|
     t.datetime "expires"
