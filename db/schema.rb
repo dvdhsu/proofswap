@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141025092444) do
   enable_extension "plpgsql"
 
   create_table "essays", force: true do |t|
-    t.string   "link"
+    t.string   "filepicker_url"
     t.integer  "swap_id"
     t.integer  "user_id"
     t.string   "name"
@@ -30,9 +30,12 @@ ActiveRecord::Schema.define(version: 20141025092444) do
 
   create_table "swaps", force: true do |t|
     t.datetime "expires"
+    t.integer  "users_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "swaps", ["users_count"], name: "index_swaps_on_users_count", using: :btree
 
   create_table "swaps_users", id: false, force: true do |t|
     t.integer "user_id"
