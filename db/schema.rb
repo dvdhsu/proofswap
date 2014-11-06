@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20141025092444) do
     t.string   "filepicker_url"
     t.integer  "swap_id"
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

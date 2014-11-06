@@ -4,7 +4,7 @@ class CreatePapers < ActiveRecord::Migration
       t.string :filepicker_url
       t.references :swap, index: true
       t.references :user, index: true
-      t.string :name
+      t.string :title
 
       t.timestamps
     end
