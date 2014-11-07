@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include Capitalize
 
   has_and_belongs_to_many :swaps
-  has_many :essays
+  has_many :papers
   
   before_validation :capitalize_names
 
