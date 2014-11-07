@@ -28,6 +28,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    auto_strip_attributes (2.0.6)
+      activerecord (>= 3.0)
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
@@ -135,6 +137,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto_strip_attributes
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.2)
   coffee-rails (= 4.0.1)
