@@ -1,2 +1,66 @@
-%h1 Swaps#index
-%p Find me in app/views/swaps/index.html.haml
+%h1 Swaps
+#swaps_list
+  - id = current_user.id
+  .row
+    .col-sm-8
+      %h3 Ongoing swaps
+      - if @paired_swaps.empty?
+        %h4 You don't have any swaps. Go create some new new ones below.
+      - for swap in @paired_swaps do
+        - other_user = swap.other_user id
+        .well
+          .individual_swap
+            %h4 Swap with #{other_user.first_name} #{other_user.last_name}
+            %p Expires: #{swap.expires.to_formatted_s :short}, with #{swap.time_left} remaining.
+            %p #{other_user.first_name}'s documents:
+            .other_documents
+              %ol.list-group
+                - for paper in swap.other_papers id
+                  %li.list-group-item
+                    = paper.title
+                    %a.badge{ href: paper.filepicker_url } Download
+            %p Your documents:
+            .own_documents
+              %ol.list-group
+                - for paper in swap.own_papers id
+                  %li.list-group-item
+                    = paper.title
+                    %a.badge{ href: paper.filepicker_url } Download
+            = form_tag 'swaps/' + swap.id.to_s, method: 'patch', class: 'addPaperForm', id: 'addPaperForm' + swap.id.to_s do
+              = hidden_field_tag "add_paper_filepicker_url"
+              = hidden_field_tag "add_paper_title"
+            = button_tag "Add paper", class: "btn btn-primary addPaperButton", id: "addPaperButton#{swap.id.to_s}"
+    .col-sm-4
+      - if !@unpaired_swaps.empty?
+        %h3 Pending swaps
+        %ol.list-group
+        - for swap in @unpaired_swaps do
+          .well
+            .pending_swap
+              %li.list-group-item
+                = swap.papers[0].title + ", " + swap.time_left + " left"
+
+.create-swap
+  %h3 Create new swap
+  = form_tag swaps_path do
+    .create-swap-form
+      .form-group
+        .btn.btn-primary#uploadButton Choose paper
+      .form-group
+        .row
+          .col-sm-6
+            %label.control-label Paper title
+            = text_field_tag 'new_swap_title', nil, placeholder: 'e.g. Exporing a Hyperplane Defect at the LHC', class: "form-control"
+      .form-group
+        .row
+          .col-sm-6
+            %label.control-label Urgency
+            %select.form-control{ id: 'new_swap_expires', name: 'new_swap_expires' }
+              %option 24 hours
+              %option 3 days
+              %option 5 days
+              %option 7 days
+      %input#new_swap_filepicker_url{ type: 'hidden', name: 'new_swap_filepicker_url' }
+      = submit_tag "Swap!", class: "btn btn-success"
+
+<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
