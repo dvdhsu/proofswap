@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   @@college_regex = /\A(.+)@(.+)\.ox\.ac\.uk\Z/
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates_format_of :email, with: @@college_regex,  message: "must be from Oxford", unless: "admin?"
+#  validates_format_of :email, with: @@college_regex,  message: "must be from Oxford", unless: "admin?"
   validates :first_name, :last_name, :college, presence: true
   
   def self.paged(page_number)

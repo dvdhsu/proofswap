@@ -10,11 +10,11 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email %> <i><small>(must be from Oxford) </small></i>
+        <%= f.label :email %> <!-- <i><small>(must be from Oxford) </small></i> -->
         <div class="row">
           <div class="col-sm-8">
+              <!--              pattern: "(.+)@(.+)\\.ox\\.ac\\.uk", title: "E-mail must be from Oxford", -->
             <%= f.email_field :email, required: true,
-              pattern: "(.+)@(.+)\\.ox\\.ac\\.uk", title: "E-mail must be from Oxford",
               class: "form-control", id:"emailField" %>
           </div>
         </div>
