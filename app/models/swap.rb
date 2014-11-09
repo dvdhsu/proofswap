@@ -3,6 +3,8 @@ class Swap < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :papers
 
+  validates :expires, :users_count, presence: true
+
   def time_left
     self.expires.past? ? "Expired" : time_ago_in_words(self.expires, include_seconds: true)
   end
