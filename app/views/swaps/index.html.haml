@@ -29,7 +29,7 @@
             = form_tag 'swaps/' + swap.id.to_s, method: 'patch', class: 'addPaperForm', id: 'addPaperForm' + swap.id.to_s do
               = hidden_field_tag "add_paper_filepicker_url"
               = hidden_field_tag "add_paper_title"
-            = button_tag "Add paper", class: "btn btn-primary addPaperButton", id: "addPaperButton#{swap.id.to_s}"
+            = button_tag "Upload Comments", class: "btn btn-primary addPaperButton", id: "addPaperButton#{swap.id.to_s}"
     .col-sm-4
       - if !@unpaired_swaps.empty?
         %h3 Pending swaps
