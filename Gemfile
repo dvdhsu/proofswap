@@ -11,6 +11,7 @@ gem 'pg'
 gem 'haml-rails'
 gem 'figaro', '0.7.0'     # env variables
 gem 'auto_strip_attributes'
+gem 'sidekiq'
 
 group :doc do
   gem 'sdoc', require: false
